@@ -1,6 +1,6 @@
-from player import *
-from level import *
-from enemy import *
+from PythonFiles.player import *
+from PythonFiles.level import *
+from PythonFiles.enemy import *
 
 
 def draw_text(text, font, colour, surface, x, y):
@@ -55,7 +55,7 @@ def main_menu():  # main menu
 
 def run_game():
     playing = True
-    level1a = Level(read_level_data("level1a"))
+    level1a = Level(read_level_data("LevelTileMaps/level1a"))
     current_level = level1a
     player = Player(60, 60, current_level)
     while playing:
