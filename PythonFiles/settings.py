@@ -17,19 +17,19 @@ tile_size = 20
 animation_cooldown = 5
 button_width = 200
 button_height = 50
-blockID = {1: "Images/Blocks/grass_block.jpg", 2: "Images/Blocks/dirt_block.jpg", 3: "Images/Blocks/stone_brick1.png",
-           4: "Images/Blocks/stone_brick2.png", 5: "Images/Blocks/stone_brick3.png"}
+blockID = {1: "../Images/Blocks/grass_block.jpg", 2: "../Images/Blocks/dirt_block.jpg", 3: "../Images/Blocks/stone_brick1.png",
+           4: "../Images/Blocks/stone_brick2.png", 5: "../Images/Blocks/stone_brick3.png"}
 pygame.display.set_caption("Platform game")
-icon = pygame.image.load("Images/sword_icon.png")
+icon = pygame.image.load("../Images/sword_icon.png")
 pygame.display.set_icon(icon)
-background = pygame.image.load("Images/Backgrounds/background_forest.jpg")
+background = pygame.image.load("../Images/Backgrounds/background_forest.jpg")
 clock = pygame.time.Clock()
 
 
 def load_animations(name, frames, action, slow):
     images = []
     for num in range(0, frames):
-        image = pygame.image.load(f"Images/{name}/{action}/{name}_{action}_{num}.png")
+        image = pygame.image.load(f"../Images/{name}/{action}/{name}_{action}_{num}.png")
         if (name == "Player" and
                 ((action == "Attack1" or action == "Attack2") and num == 2) or (action == "Attack2" and num == 3)):
             image = pygame.transform.scale(image, (char_width * 7 // 3, char_height * 5 // 4))
