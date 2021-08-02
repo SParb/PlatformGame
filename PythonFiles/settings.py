@@ -2,9 +2,8 @@ import pygame
 
 
 pygame.init()
-title_font = pygame.font.SysFont("Calibri", 35)
+title_font = pygame.font.SysFont("Calibri", 60)
 button_font = pygame.font.SysFont("Calibri", 20)
-#text = mmfont.render("quit", True, (255, 255, 255))
 res = (1200, 800)
 screen = pygame.display.set_mode(res)
 screen_width = screen.get_width()
@@ -17,8 +16,12 @@ tile_size = 20
 animation_cooldown = 5
 button_width = 200
 button_height = 50
-blockID = {1: "../Images/Blocks/grass_block.jpg", 2: "../Images/Blocks/dirt_block.jpg", 3: "../Images/Blocks/stone_brick1.png",
-           4: "../Images/Blocks/stone_brick2.png", 5: "../Images/Blocks/stone_brick3.png"}
+blockID = {2: "../Images/Blocks/grass_block_mid.png", 3: "../Images/Blocks/grass_block_left.png",
+           4: "../Images/Blocks/grass_block_right.png", 5: "../Images/Blocks/dirt_block_midmid.png",
+           6: "../Images/Blocks/dirt_block_midleft.png", 7: "../Images/Blocks/dirt_block_midright.png",
+           8: "../Images/Blocks/dirt_block_botmid.png", 9: "../Images/Blocks/dirt_block_botleft.png",
+           10: "../Images/Blocks/dirt_block_botright.png", 11: "../Images/Blocks/stone_brick_topright.png",
+           12: "../Images/Blocks/stone_brick_midright.png", 13: "../Images/Blocks/stone_brick_botright.png"}
 pygame.display.set_caption("Platform game")
 icon = pygame.image.load("../Images/sword_icon.png")
 pygame.display.set_icon(icon)
@@ -55,10 +58,9 @@ def read_level_data(file):  # top 6 rows all 0
     data = []
     with open(file, "r") as file:
         for line in file:
-            row = []
-            for char in line:
-                if char != "," and char != "\n":
-                    row.append(int(char))
-            data.append(row)
+            row = line.split(",")
+            row[-1] = row[-1].strip()
+            ints = [int(item) for item in row]
+            data.append(ints)
     file.close()
     return data

@@ -105,7 +105,6 @@ class Player:
         if left and not self.attacking and self.start is False:
             self.index = 0
             self.attacking = True
-        self.start = False  # Stop any buffered attacks
 
         if right:
             pass
@@ -142,6 +141,7 @@ class Player:
                     self.jumped = False
                     self.falling = False
                     self.jump_counter = 0
+                    self.start = False  # Stop any buffered attacks
 
         # update player position
         self.rect.x += dx
