@@ -61,10 +61,10 @@ def run_game():
     playing = True
     level1a = Level(read_level_data("../LevelTileMaps/level1a"))
     current_level = level1a
-    player = Player(60, 60, current_level)
+    player = Player(600, 300, current_level)
     while playing:
         screen.blit(background, (0, 0))
-        current_level.draw()
+        current_level.draw(player.screen_scroll)
         #draw_grid()
         player.update()
         for event in pygame.event.get():
@@ -83,6 +83,6 @@ def run_game():
         clock.tick(60)
 
 
-main_menu()
-#run_game()
+#main_menu()
+run_game()
 pygame.quit()

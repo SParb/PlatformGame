@@ -26,7 +26,7 @@ class Player:
         self.sword_zone1 = self.rect.inflate(self.width // 3, self.height // 4)  # sword zone infront player
         self.sword_zone1.x = self.rect.x + self.width
         self.sword_zone1.y = self.rect.y - self.height // 4
-        self.sword_zone2 = pygame.Rect(0, 0, self.width, self.height*1//4)  # sword zone in player (temp)
+        self.sword_zone2 = pygame.Rect(0, 0, self.width, self.height * 1 // 4)  # sword zone in player (temp)
         self.sword_zone2.x = self.rect.x
         self.sword_zone2.y = self.rect.y - self.height // 4
         self.y_velocity = 0
@@ -38,6 +38,7 @@ class Player:
         self.attacking = False
         self.attack_first_style = True
         self.start = True
+        self.screen_scroll = 0
 
     def next_animation(self):
         if self.attacking:
@@ -94,7 +95,7 @@ class Player:
 
         if key[pygame.K_d]:
             dx += 5
-            if not(self.attacking and not self.look_right):
+            if not (self.attacking and not self.look_right):
                 self.look_right = True
                 self.sword_zone1.x = self.rect.x + self.width
             if not self.jumped and not self.attacking:
@@ -121,7 +122,7 @@ class Player:
         # gravity
         self.y_velocity += 1
         if self.y_velocity > 8:  # gravity strength
-            self.y_velocity = 8   # gravity strength
+            self.y_velocity = 8  # gravity strength
             self.falling = True
         dy += self.y_velocity
         # check collision
@@ -151,6 +152,15 @@ class Player:
         self.sword_zone2.x += dx
         self.sword_zone2.y += dy
 
+        if self.name == "Player":
+            if self.rect.right > screen_width - scroll_thresh or self.rect.left < scroll_thresh:
+                self.rect.x -= dx
+                self.sword_zone1.x -= dx
+                self.sword_zone2.x -= dx
+                self.screen_scroll = -dx
+            else:
+                self.screen_scroll = 0
+
         #  place image on screen
         if self.imageID[1]:
             if self.look_right:
@@ -162,8 +172,8 @@ class Player:
 
         self.hitbox_grid()
 
+
     def hitbox_grid(self):
         pygame.draw.rect(screen, (255, 255, 0), self.sword_zone1, 2)
         pygame.draw.rect(screen, (255, 255, 0), self.sword_zone2, 2)
         pygame.draw.rect(screen, (0, 255, 255), self.rect, 2)  # player hit box
-

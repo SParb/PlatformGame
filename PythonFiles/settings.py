@@ -1,32 +1,5 @@
 import pygame
-
-
-pygame.init()
-title_font = pygame.font.SysFont("Calibri", 60)
-button_font = pygame.font.SysFont("Calibri", 20)
-res = (1200, 800)
-screen = pygame.display.set_mode(res)
-screen_width = screen.get_width()
-screen_height = screen.get_height()
-ui_width = screen_width
-ui_height = 120
-char_width = 60
-char_height = 80
-tile_size = 20
-animation_cooldown = 5
-button_width = 200
-button_height = 50
-blockID = {2: "../Images/Blocks/grass_block_mid.png", 3: "../Images/Blocks/grass_block_left.png",
-           4: "../Images/Blocks/grass_block_right.png", 5: "../Images/Blocks/dirt_block_midmid.png",
-           6: "../Images/Blocks/dirt_block_midleft.png", 7: "../Images/Blocks/dirt_block_midright.png",
-           8: "../Images/Blocks/dirt_block_botmid.png", 9: "../Images/Blocks/dirt_block_botleft.png",
-           10: "../Images/Blocks/dirt_block_botright.png", 11: "../Images/Blocks/stone_brick_topright.png",
-           12: "../Images/Blocks/stone_brick_midright.png", 13: "../Images/Blocks/stone_brick_botright.png"}
-pygame.display.set_caption("Platform game")
-icon = pygame.image.load("../Images/sword_icon.png")
-pygame.display.set_icon(icon)
-background = pygame.image.load("../Images/Backgrounds/background_forest.jpg")
-clock = pygame.time.Clock()
+from sprite_sheet import Spritesheet
 
 
 def load_animations(name, frames, action, slow):
@@ -64,3 +37,34 @@ def read_level_data(file):  # top 6 rows all 0
             data.append(ints)
     file.close()
     return data
+
+
+pygame.init()
+title_font = pygame.font.SysFont("Calibri", 60)
+button_font = pygame.font.SysFont("Calibri", 20)
+res = (1200, 800)
+screen = pygame.display.set_mode(res)
+screen_width = screen.get_width()
+screen_height = screen.get_height()
+ui_width = screen_width
+ui_height = 120
+char_width = 60
+char_height = 80
+tile_size = 20
+scroll_thresh = 500
+animation_cooldown = 5
+button_width = 200
+button_height = 50
+sprites1 = Spritesheet("../Images/Blocks/Dungeon_assets/Assets.png", tile_size, 64, 1600, 896)
+sprites1_dict = sprites1.create_sprite_dic(2)
+sprites2 = Spritesheet("../Images/Blocks/Outdoor_assets/Assets.png", tile_size, 16, 400, 400)
+sprites2_dict = sprites2.create_sprite_dic(627)
+sprites1_dict.update(sprites2_dict)
+pygame.display.set_caption("Platform game")
+icon = pygame.image.load("../Images/sword_icon.png")
+pygame.display.set_icon(icon)
+background = pygame.image.load("../Images/Backgrounds/background_forest.jpg")
+clock = pygame.time.Clock()
+
+
+
