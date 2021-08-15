@@ -152,7 +152,7 @@ class Player:
         self.sword_zone2.x += dx
         self.sword_zone2.y += dy
 
-        if self.name == "Player":
+        if self.name == "Player":  # scrolling effect
             if self.rect.right > screen_width - scroll_thresh or self.rect.left < scroll_thresh:
                 self.rect.x -= dx
                 self.sword_zone1.x -= dx

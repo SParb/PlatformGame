@@ -20,7 +20,13 @@ class Level:
             row_count += 1
 
     def draw(self, screen_scroll):
-
         for tile in self.tile_list:
             tile[1][0] += screen_scroll
             screen.blit(tile[0], tile[1])
+
+    def editor_draw(self, offset):
+        for tile in self.tile_list:
+            tile[1][0] += offset
+            screen.blit(tile[0], tile[1])
+        offset = 0
+        return offset

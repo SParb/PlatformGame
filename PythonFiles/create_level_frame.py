@@ -8,4 +8,4 @@ def add_zeros(file, blockwidth, blockheight):
     file.close()
 
 
-#add_zeros("../LevelTileMaps/empty_level",  120, 40)
+add_zeros("../LevelTileMaps/empty_level",  120, 40)
