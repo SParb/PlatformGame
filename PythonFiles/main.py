@@ -56,15 +56,14 @@ def main_menu():  # main menu
         clock.tick(60)
 
 
-
 def run_game():
     playing = True
-    level1a = Level(read_level_data("../LevelTileMaps/level1"))
+    level1a = Level(read_level_data("../LevelTileMaps/level1"), 0, -55)  # level offset by block
     current_level = level1a
     player = Player(600, 300, current_level)
     while playing:
         screen.blit(background, (0, 0))
-        current_level.draw(player.screen_scroll)
+        current_level.draw(player.xscreen_scroll, player.yscreen_scroll)
         player.update()
         for event in pygame.event.get():
             if event.type == pygame.QUIT:

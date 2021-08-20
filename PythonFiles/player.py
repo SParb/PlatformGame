@@ -38,7 +38,8 @@ class Player:
         self.attacking = False
         self.attack_first_style = True
         self.start = True
-        self.screen_scroll = 0
+        self.xscreen_scroll = 0
+        self.yscreen_scroll = 0
 
     def next_animation(self):
         if self.attacking:
@@ -153,14 +154,20 @@ class Player:
         self.sword_zone2.y += dy
 
         if self.name == "Player":  # scrolling effect
-            if self.rect.right > screen_width - scroll_thresh or self.rect.left < scroll_thresh:
+            if self.rect.right > screen_width - x_scroll_thresh or self.rect.left < x_scroll_thresh:
                 self.rect.x -= dx
                 self.sword_zone1.x -= dx
                 self.sword_zone2.x -= dx
-                self.screen_scroll = -dx
+                self.xscreen_scroll = -dx
             else:
-                self.screen_scroll = 0
-
+                self.xscreen_scroll = 0
+            if self.rect.bottom > screen_height - y_scroll_thresh or self.rect.top < y_scroll_thresh :
+                self.rect.y -= dy
+                self.sword_zone1.y -= dy
+                self.sword_zone2.y -= dy
+                self.yscreen_scroll = -dy
+            else:
+                self.yscreen_scroll = 0
         #  place image on screen
         if self.imageID[1]:
             if self.look_right:
@@ -171,7 +178,6 @@ class Player:
             screen.blit(self.image, self.rect)
 
         self.hitbox_grid()
-
 
     def hitbox_grid(self):
         pygame.draw.rect(screen, (255, 255, 0), self.sword_zone1, 2)

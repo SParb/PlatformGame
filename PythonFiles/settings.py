@@ -31,10 +31,14 @@ def read_level_data(file):  # top 6 rows all 0
     data = []
     with open(file, "r") as file:
         for line in file:
+            rowdata = []
             row = line.split(",")
             row[-1] = row[-1].strip()
-            ints = [int(item) for item in row]
-            data.append(ints)
+            ints = [item for item in row]
+            for item in ints:
+                tile = (item[0], int(item[1:]))
+                rowdata.append(tile)
+            data.append(rowdata)
     file.close()
     return data
 
@@ -51,7 +55,8 @@ ui_height = 120
 char_width = 60
 char_height = 80
 tile_size = 20
-scroll_thresh = 500
+x_scroll_thresh = 500
+y_scroll_thresh = 300
 animation_cooldown = 5
 button_width = 200
 button_height = 50
