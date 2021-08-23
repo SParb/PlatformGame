@@ -105,7 +105,7 @@ level_height = 800
 pygame.display.set_caption("Platform game editor")
 background = pygame.image.load("../Images/Backgrounds/background_forest.jpg")
 selected_block = None
-data = "../LevelTileMaps/empty_level"
+data = "../LevelTileMaps/level1"
 running = True
 grid = False
 edit_level = Level(read_level_data(data), 0, 0)

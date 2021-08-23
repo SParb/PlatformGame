@@ -26,29 +26,3 @@ class Spritesheet:
                 sprites_dic[counter] = sprite
                 counter += 1
         return sprites_dic
-
-
-
-
-
-"""pygame.init()
-title_font = pygame.font.SysFont("Calibri", 60)
-button_font = pygame.font.SysFont("Calibri", 20)
-res = (1200, 800)
-tile_size = 20
-screen = pygame.display.set_mode(res)
-screen_width = screen.get_width()
-screen_height = screen.get_height()
-running = True
-sprites = Spritesheet("../Images/Blocks/Dungeon_assets/Assets.png", 20)
-xcor, ycor = sprites.sprite_sheet.get_rect().size
-sprite1 = sprites.get_sprite(0, 0, 20, 20)  # xcor, ycor, tilesizex, tilesizey
-dict = sprites.create_sprite_dic()
-while running:
-    screen.fill((0, 60, 0))
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    sprites.blit_tiles(dict, screen)
-    pygame.display.update()
-pygame.quit()"""

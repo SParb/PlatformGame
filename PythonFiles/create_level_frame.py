@@ -10,10 +10,8 @@ def add_zeros(file, blockwidth, blockheight):
     file.close()
 
 
-#add_zeros("../LevelTileMaps/empty_level",  120, 80)
-data = read_level_data("../LevelTileMaps/empty_level")
-print(data)
-print(len(data))
-print(len(data[1]))
+#add_zeros("../LevelTileMaps/level2",  200, 200)
+
+
 
 

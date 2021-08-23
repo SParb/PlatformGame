@@ -81,6 +81,6 @@ def run_game():
         clock.tick(60)
 
 
-#main_menu()
-run_game()
+main_menu()
+
 pygame.quit()

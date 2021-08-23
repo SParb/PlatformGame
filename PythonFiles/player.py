@@ -177,7 +177,7 @@ class Player:
         else:
             screen.blit(self.image, self.rect)
 
-        self.hitbox_grid()
+        #self.hitbox_grid()
 
     def hitbox_grid(self):
         pygame.draw.rect(screen, (255, 255, 0), self.sword_zone1, 2)
